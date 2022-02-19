@@ -1,12 +1,12 @@
 {
   "author": {
-    "name": "D0n9X1n"
+    "name": "yiyun"
   },
   "bugs": {
-    "url": "https://github.com/D0n9X1n/hexo-blog-encrypt/issues"
+    "url": "https://github.com/yiyungent/hexo-encrypt-token/issues"
   },
   "description": "Yet, just another blog encrypt plugin for hexo.",
-  "homepage": "https://github.com/D0n9X1n/hexo-blog-encrypt#readme",
+  "homepage": "https://github.com/yiyungent/hexo-encrypt-token#readme",
   "keywords": [
     "encrypt",
     "blog",
@@ -20,10 +20,10 @@
       "name": "D0n9X1n"
     }
   ],
-  "name": "hexo-blog-encrypt",
+  "name": "hexo-encrypt-token",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/D0n9X1n/hexo-blog-encrypt.git"
+    "url": "git+ssh://git@github.com/yiyungent/hexo-encrypt-token.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -16,8 +16,8 @@ const defaultConfig = {
   'silent': false,
 };
 
-const keySalt = textToArray('hexo-blog-encrypt的作者们都是大帅比!');
-const ivSalt = textToArray('hexo-blog-encrypt是地表最强Hexo加密插件!');
+const keySalt = textToArray('hexo-encrypt-token的作者们都是大帅比!');
+const ivSalt = textToArray('hexo-encrypt-token是地表最强Hexo加密插件!');
 
 // As we can't detect the wrong password with AES-CBC,
 // so adding an empty tag and check it when decrption.
@@ -74,16 +74,16 @@ hexo.extend.filter.register('after_post_render', (data) => {
 
   // deprecate the template keyword
   if (config.template) {
-    dlog('warn', 'Looks like you use a deprecated property "template" to set up template, consider to use "theme"? See https://github.com/D0n9X1n/hexo-blog-encrypt#encrypt-theme');
+    dlog('warn', 'Looks like you use a deprecated property "template" to set up template, consider to use "theme"? See https://github.com/D0n9X1n/hexo-encrypt-token#encrypt-theme');
   }
 
   // read theme from file
   let template = fs.readFileSync(path.resolve(__dirname, `./lib/hbe.${theme}.html`)).toString();
 
   if (tagUsed === false) {
-    dlog('info', `hexo-blog-encrypt: encrypting "${data.title.trim()}" based on the password configured in Front-matter with theme: ${theme}.`);
+    dlog('info', `hexo-encrypt-token: encrypting "${data.title.trim()}" based on the password configured in Front-matter with theme: ${theme}.`);
   } else {
-    dlog('info', `hexo-blog-encrypt: encrypting "${data.title.trim()}" based on Tag: "${tagUsed}" with theme ${theme}.`);
+    dlog('info', `hexo-encrypt-token: encrypting "${data.title.trim()}" based on Tag: "${tagUsed}" with theme ${theme}.`);
   }
 
   data.content = knownPrefix + data.content.trim();
@@ -111,7 +111,7 @@ hexo.extend.filter.register('after_post_render', (data) => {
   return data;
 }, 1000);
 
-hexo.extend.generator.register('hexo-blog-encrypt', () => [
+hexo.extend.generator.register('hexo-encrypt-token', () => [
   {
     'data': () => fs.createReadStream(path.resolve(__dirname, `./lib/hbe.style.css`)),
     'path': `css/hbe.style.css`,
