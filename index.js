@@ -9,7 +9,7 @@ const log = hexo.log;
 
 const defaultConfig = {
   'abstract': 'Here\'s something encrypted, password is required to continue reading.',
-  'message': 'Hey, password is required here.',
+  'message': '请等待 自动解密 !!! 请等待 自动解密 !!! 请等待 自动解密 !!! ',
   'theme': 'default',
   'wrong_pass_message': 'Oh, this is an invalid password. Check and try again, please.',
   'wrong_hash_message': 'OOPS, these decrypted content may changed, but you can still have a look.',
