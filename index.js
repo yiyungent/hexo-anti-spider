@@ -100,11 +100,31 @@ hexo.extend.filter.register('after_post_render', (data) => {
   encryptedData += cipher.final('hex');
   const hmacDigest = hmac.digest('hex');
 
+  // https://www.cnblogs.com/loveamyforever/p/7454557.html
+  // 不过滤 img
+  let hbeSeoContent = data.origin.replace(/<span>/gi,"")
+                                .replace(/<span (.*?)>/gi,"")
+                                .replace(/<\/span>/gi,"")
+                                .replace(/<div>/gi,"")
+                                .replace(/<div (.*?)>/gi,"")
+                                .replace(/<\/div>/gi,"")
+                                .replace(/<p>/gi,"")
+                                .replace(/<p (.*?)>/gi,"")
+                                .replace(/<\/p>/gi,"")
+                                .replace(/<h1>/gi,"")
+                                .replace(/<h1 (.*?)>/gi,"")
+                                .replace(/<\/h1>/gi,"")
+                                .replace(/<code>/gi,"")
+                                .replace(/<code (.*?)>/gi,"")
+                                .replace(/<\/code>/gi,"")
+                                ;
+
   data.content = template.replace(/{{hbeEncryptedData}}/g, encryptedData)
     .replace(/{{hbeHmacDigest}}/g, hmacDigest)
     .replace(/{{hbeWrongPassMessage}}/g, config.wrong_pass_message)
     .replace(/{{hbeWrongHashMessage}}/g, config.wrong_hash_message)
-    .replace(/{{hbeMessage}}/g, config.message);
+    .replace(/{{hbeMessage}}/g, config.message)
+    .replace(/{{hbeSeoContent}}/g, hbeSeoContent);
   data.content += `<script data-pjax src="${hexo.config.root}lib/hbe.js"></script><link href="${hexo.config.root}css/hbe.style.css" rel="stylesheet" type="text/css">`;
   // 注意: excerpt, more 不进行加密
   // data.excerpt = data.more = config.abstract;
