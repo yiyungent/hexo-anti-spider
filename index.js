@@ -117,12 +117,18 @@ hexo.extend.filter.register('after_post_render', (data) => {
                                 .replace(/<code>/gi,"")
                                 .replace(/<code (.*?)>/gi,"")
                                 .replace(/<\/code>/gi,"")
+                                .replace(/<blockquote>/gi,"")
                                 .replace(/<blockquote (.*?)>/gi,"")
                                 .replace(/<\/blockquote>/gi,"")
+                                .replace(/<ul>/gi,"")
                                 .replace(/<ul (.*?)>/gi,"")
                                 .replace(/<\/ul>/gi,"")
+                                .replace(/<li>/gi,"")
                                 .replace(/<li (.*?)>/gi,"")
                                 .replace(/<\/li>/gi,"")
+                                .replace(/<strong>/gi,"")
+                                .replace(/<strong (.*?)>/gi,"")
+                                .replace(/<\/strong>/gi,"")
                                 ;
 
   data.content = template.replace(/{{hbeEncryptedData}}/g, encryptedData)
