@@ -54,6 +54,13 @@ npm install hexo-encrypt-token --save
 </head>
 ```
 
+```powershell
+$token="admin"
+# 此脚本可批量设置 ./source/_posts 目录下的所有 md 文章的 password 
+# $token="admin" 即为设置 password 为 admin
+./password.ps1
+```
+
 ## 使用案例
 
 - [Visual Studio Code 配置 LaTex | 笔记 | yiyun's Blog](https://moeci.com/posts/%E5%88%86%E7%B1%BB-%E6%9D%82%E8%AE%B0/vscode-latex-notebook/)
