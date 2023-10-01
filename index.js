@@ -2,6 +2,8 @@
 
 'use strict';
 
+const hexo_encrypt_token_config = require("./lib/config")(hexo);
+
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
@@ -29,6 +31,8 @@ var silent = false;
 var theme = 'default';
 
 hexo.extend.filter.register('after_post_render', (data) => {
+  if (!hexo_encrypt_token_config.enable) return data;
+
   const tagEncryptPairs = [];
 
   let password = data.password;
@@ -100,9 +104,12 @@ hexo.extend.filter.register('after_post_render', (data) => {
   encryptedData += cipher.final('hex');
   const hmacDigest = hmac.digest('hex');
 
-  // https://www.cnblogs.com/loveamyforever/p/7454557.html
-  // 不过滤 img
-  let hbeSeoContent = data.origin.replace(/<span>/gi,"")
+  let hbeSeoContent = "";
+  if (hexo_encrypt_token_config.seo) {
+    // https://www.cnblogs.com/loveamyforever/p/7454557.html
+    // 不过滤 img
+    //#region 过滤
+    hbeSeoContent = data.origin.replace(/<span>/gi,"")
                                 .replace(/<span (.*?)>/gi,"")
                                 .replace(/<\/span>/gi,"")
                                 .replace(/<div>/gi,"")
@@ -154,6 +161,8 @@ hexo.extend.filter.register('after_post_render', (data) => {
                                 .replace(/<a (.*?)>/gi,"")
                                 .replace(/<\/a>/gi,"")
                                 ;
+    //#endregion 过滤
+  }
 
   data.content = template.replace(/{{hbeEncryptedData}}/g, encryptedData)
     .replace(/{{hbeHmacDigest}}/g, hmacDigest)
