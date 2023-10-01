@@ -1,35 +1,35 @@
 {
+  "name": "hexo-encrypt-token",
+  "version": "4.2.3",
   "author": {
     "name": "yiyun"
   },
-  "bugs": {
-    "url": "https://github.com/yiyungent/hexo-encrypt-token/issues"
-  },
   "description": "Yet, just another blog encrypt plugin for hexo.",
-  "homepage": "https://github.com/yiyungent/hexo-encrypt-token#readme",
   "keywords": [
     "encrypt",
     "blog",
     "hexo"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "homepage": "https://github.com/yiyungent/hexo-encrypt-token#readme",
   "maintainers": [
     {
       "email": "yiyungent@gmail.com",
       "name": "yiyun"
     }
   ],
-  "name": "hexo-encrypt-token",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/yiyungent/hexo-encrypt-token.git"
   },
+  "bugs": {
+    "url": "https://github.com/yiyungent/hexo-encrypt-token/issues"
+  },
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .js ./"
   },
-  "version": "4.2.2",
   "devDependencies": {
     "eslint": "^6.2.2"
   }
